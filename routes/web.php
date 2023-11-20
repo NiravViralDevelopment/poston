@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
     // })->middleware(['auth', 'verified'])->name('dashboard');
 
     Route::get('dashboard','Admin\DashboardController@dashboard')->name('dashboard');
-    
+
 });
 
 require __DIR__.'/auth.php';
