@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'affiliates' => [
+            'driver' => 'session',
+            'provider' => 'affiliates',
+        ],
     ],
 
     /*
@@ -64,6 +68,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'affiliates' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\AffiliateModel::class,
+        ]
+
 
         // 'users' => [
         //     'driver' => 'database',
@@ -97,6 +106,7 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
     ],
 
     /*

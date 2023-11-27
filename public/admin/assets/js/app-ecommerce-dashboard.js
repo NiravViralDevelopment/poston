@@ -5,7 +5,7 @@
 'use strict';
 
 (function () {
-  let cardColor, labelColor, headingColor, borderColor, legendColor;
+  let cardColor, labelColor, headingColor, borderColor, legendColor,isDarkStyle;
 
   if (isDarkStyle) {
     cardColor = config.colors_dark.cardColor;

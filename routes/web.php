@@ -34,9 +34,29 @@ Route::middleware('auth')->group(function () {
     // Route::get('/dashboard', function () {
     //     return view('dashboard');
     // })->middleware(['auth', 'verified'])->name('dashboard');
-
     Route::get('dashboard','Admin\DashboardController@dashboard')->name('dashboard');
 
 });
+
+
+
+
+
+//affiliate_system
+Route::get('affiliate_login','Affiliate\AffiliateController@affiliate_login')->name('affiliate_login');
+Route::POST('affiliate_login_auth','Affiliate\AffiliateController@affiliate_login_auth')->name('affiliate_login_auth');
+
+Route::middleware('is_affiliate')->group(function ()
+{
+    Route::get('affiliate_system','Affiliate\AffiliateController@dashboard')->name('affiliate_system');
+    Route::get('affiliate_logout','Affiliate\AffiliateController@affiliate_logout')->name('affiliate_logout');
+
+    Route::resource('withdrawalmethod','Affiliate\WithDrawalMethodController');
+
+
+});
+
+
+
 
 require __DIR__.'/auth.php';

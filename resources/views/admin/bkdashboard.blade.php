@@ -1,5 +1,4 @@
 @extends('admin.layout.admin_master')
-@section('content')
 
 <style>
     * { box-sizing: border-box; }
@@ -27,12 +26,14 @@ body { font-family: sans-serif; }
 
 .grid-sizer,
 .grid-item {
-  width: 25%;
+  width: 30%;
 }
 
 .grid-item {
-  padding-bottom:0%; /* hack for proportional sizing */
+  padding-bottom:1%; /* hack for proportional sizing */
   float: left;
+  /* margin: 01px; */
+  grid-gap: 1px;
   background-position: center center;
   background-size: cover;
 }
@@ -42,8 +43,8 @@ body { font-family: sans-serif; }
 }
 
 .grid-item--large {
-  width: 50%;
-  padding-bottom: 50%;
+  width: 100%;
+  padding-bottom: 40%;
 }
 
 .packery-drop-placeholder {
@@ -59,7 +60,10 @@ body { font-family: sans-serif; }
 </style>
 
 
-<div class="content-wrapper">
+@section('content')
+
+
+ <div class="content-wrapper">
 
     <div class="content-header">
       <div class="container-fluid">
@@ -69,7 +73,7 @@ body { font-family: sans-serif; }
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="3">Home</a></li>
               {{-- <li class="breadcrumb-item active">Dashboard</li> --}}
             </ol>
           </div>
@@ -82,179 +86,11 @@ body { font-family: sans-serif; }
             <div class="grid-sizer">
 
         </div>
-        <!-- <div class="grid-item grid-item" data-item-id="1">
+        <div class="grid-item grid-item" data-item-id="1">
 
-            <div class="col-lg-12 col-12">
-                <div class="small-box bg-info">
-                  <div class="inner">
-                    <h3>150</h3>
-
-                    <p>New Orders</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-bag"></i>
-                  </div>
-                  <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-        </div> -->
-
-        <div class="grid-item" data-item-id="2" >
-
-            <div class="col-lg-12 col-12">
-
-                <div class="small-box bg-success">
-                  <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                    <p>Bounce Rate</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
-                  </div>
-                  <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div>
-
-        </div>
-        <div class="grid-item" data-item-id="3">
-
-            <div class="col-lg-12 col-12">
-
-                <div class="small-box bg-warning">
-                  <div class="inner">
-                    <h3>44</h3>
-
-                    <p>User Registrations</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                  </div>
-                  <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div>
-
-        </div>
-
-        <div class="grid-item grid-item" data-item-id="4">
-        </div>
-        <div class="grid-item" data-item-id="5">
-
-            <div class="col-lg-12 col-12">
-                <div class="small-box bg-danger">
-                  <div class="inner">
-                    <h3>65</h3><p>Unique Visitors</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
-                  </div>
-                  <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-6 grid-item grid-item" data-item-id="6">
-
-            <section class="col-lg-12 col-12 connectedSortable">
-                <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">
-                      <i class="fas fa-chart-pie mr-1"></i>
-                      Sales
-                    </h3>
-                    <div class="card-tools">
-                      <ul class="nav nav-pills ml-auto">
-                        <li class="nav-item">
-                          <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div class="tab-content p-0">
-
-                      <div class="chart tab-pane active" id="revenue-chart"
-                           style="position: relative; height: 300px;">
-                          <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                       </div>
-                      <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                        <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-        </div>
-        <div class=" col-lg-6 grid-item" data-item-id="7">
-            <section class="col-lg-12 col-12 connectedSortable">
-                <div class="card bg-gradient-primary">
-                  <div class="card-header border-0">
-                    <h3 class="card-title">
-                      <i class="fas fa-map-marker-alt mr-1"></i>
-                      Visitors
-                    </h3>
-                    <div class="card-tools">
-                      <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
-                        <i class="far fa-calendar-alt"></i>
-                      </button>
-                      <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div id="world-map" style="height: 250px; width: 100%;"></div>
-                  </div>
-                  <div class="card-footer bg-transparent">
-                    <div class="row">
-                      <div class="col-4 text-center">
-                        <div id="sparkline-1"></div>
-                        <div class="text-white">Visitors</div>
-                      </div>
-
-                      <div class="col-4 text-center">
-                        <div id="sparkline-2"></div>
-                        <div class="text-white">Online</div>
-                      </div>
-
-                      <div class="col-4 text-center">
-                        <div id="sparkline-3"></div>
-                        <div class="text-white">Sales</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-        </div>
-        <div class="grid-item" data-item-id="8"
-            style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/contrail.jpg);">
-        </div>
-        <div class="grid-item" data-item-id="9"
-            style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg);">
-        </div>
-        </div>
-
-
-
-
-      </div>
-    </section>
-  </div>
-            <div class="container-xxl flex-grow-1 container-p-y">
-              <div class="row">
-
-              <div class="grid">
-                <div class="grid-sizer">
-                </div>
-
-                <div class="grid-item grid-item" data-item-id="1">
 
                 <!-- View sales -->
-                    <div class="col-xl-4 mb-4 col-lg-5 col-12">
+
                     <div class="card">
                         <div class="d-flex align-items-end row">
                         <div class="col-7">
@@ -274,103 +110,19 @@ body { font-family: sans-serif; }
                             </div>
                         </div>
                         </div>
-                    </div>
-                    </div>
 
-                <!-- View sales -->
-                </div>
 
-                <!-- View sales -->
-                <div class="col-xl-4 mb-4 col-lg-5 col-12">
-                  <div class="card">
-                    <div class="d-flex align-items-end row">
-                      <div class="col-7">
-                        <div class="card-body text-nowrap">
-                          <h5 class="card-title mb-0">Congratulations John! 🎉</h5>
-                          <p class="mb-2">Best seller of the month</p>
-                          <h4 class="text-primary mb-1">$48.9k</h4>
-                          <a href="javascript:;" class="btn btn-primary">View Sales</a>
-                        </div>
-                      </div>
-                      <div class="col-5 text-center text-sm-left">
-                        <div class="card-body pb-0 px-0 px-md-4">
-                          <img
-                            src="{{ asset('admin/assets/img/illustrations/card-advance-sale.png')}}"
-                            height="140"
-                            alt="view sales" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
                 <!-- View sales -->
 
-                <!-- Statistics -->
-                <div class="col-xl-8 mb-4 col-lg-7 col-12">
-                  <div class="card h-100">
-                    <div class="card-header">
-                      <div class="d-flex justify-content-between mb-3">
-                        <h5 class="card-title mb-0">Statistics</h5>
-                        <small class="text-muted">Updated 1 month ago</small>
-                      </div>
-                    </div>
-                    <div class="card-body">
-                      <div class="row gy-3">
-                        <div class="col-md-3 col-6">
-                          <div class="d-flex align-items-center">
-                            <div class="badge rounded-pill bg-label-primary me-3 p-2">
-                              <i class="ti ti-chart-pie-2 ti-sm"></i>
-                            </div>
-                            <div class="card-info">
-                              <h5 class="mb-0">230k</h5>
-                              <small>Sales</small>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-6">
-                          <div class="d-flex align-items-center">
-                            <div class="badge rounded-pill bg-label-info me-3 p-2">
-                              <i class="ti ti-users ti-sm"></i>
-                            </div>
-                            <div class="card-info">
-                              <h5 class="mb-0">8.549k</h5>
-                              <small>Customers</small>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-6">
-                          <div class="d-flex align-items-center">
-                            <div class="badge rounded-pill bg-label-danger me-3 p-2">
-                              <i class="ti ti-shopping-cart ti-sm"></i>
-                            </div>
-                            <div class="card-info">
-                              <h5 class="mb-0">1.423k</h5>
-                              <small>Products</small>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-6">
-                          <div class="d-flex align-items-center">
-                            <div class="badge rounded-pill bg-label-success me-3 p-2">
-                              <i class="ti ti-currency-dollar ti-sm"></i>
-                            </div>
-                            <div class="card-info">
-                              <h5 class="mb-0">$9745</h5>
-                              <small>Revenue</small>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--/ Statistics -->
+            </div>
+        </div>
 
-                <div class="col-xl-4 col-12">
-                  <div class="row">
-                    <!-- Expenses -->
-                    <div class="col-xl-6 mb-4 col-md-3 col-6">
+        &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+
+        <div class="grid-item" data-item-id="2" >
+
+
                       <div class="card">
                         <div class="card-header pb-0">
                           <h5 class="card-title mb-0">82.5k</h5>
@@ -383,11 +135,12 @@ body { font-family: sans-serif; }
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <!--/ Expenses -->
 
-                    <!-- Profit last month -->
-                    <div class="col-xl-6 mb-4 col-md-3 col-6">
+
+        </div>
+        <div class="grid-item" data-item-id="3">
+
+
                       <div class="card">
                         <div class="card-header pb-0">
                           <h5 class="card-title mb-0">Profit</h5>
@@ -401,11 +154,13 @@ body { font-family: sans-serif; }
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <!--/ Profit last month -->
 
-                    <!-- Generated Leads -->
-                    <div class="col-xl-12 mb-4 col-md-6">
+
+        </div>
+
+        <div class="grid-item grid-item" data-item-id="4">
+
+
                       <div class="card">
                         <div class="card-body">
                           <div class="d-flex justify-content-between">
@@ -425,13 +180,14 @@ body { font-family: sans-serif; }
                           </div>
                         </div>
                       </div>
-                    </div>
+                    <!-- </div> -->
                     <!--/ Generated Leads -->
-                  </div>
-                </div>
 
-                <!-- Revenue Report -->
-                <div class="col-12 col-xl-8 mb-4">
+        </div>
+        <div class="col-lg-12 grid-item" data-item-id="5">
+
+             <!-- Revenue Report -->
+             <div class="col-12 col-xl-8 mb-4">
                   <div class="card">
                     <div class="card-body p-0">
                       <div class="row row-bordered g-0">
@@ -488,9 +244,84 @@ body { font-family: sans-serif; }
                   </div>
                 </div>
                 <!--/ Revenue Report -->
+        </div>
 
-                <!-- Earning Reports -->
-                <div class="col-xl-4 col-md-6 mb-4">
+        <div class="col-lg-6 grid-item grid-item" data-item-id="6">
+
+         <!-- Statistics -->
+
+                  <div class="card h-100">
+                    <div class="card-header">
+                      <div class="d-flex justify-content-between mb-3">
+                        <h5 class="card-title mb-0">Statistics</h5>
+                        <small class="text-muted">Updated 1 month ago</small>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="row gy-3">
+                        <div class="col-md-3 col-6">
+                          <div class="d-flex align-items-center">
+                            <div class="badge rounded-pill bg-label-primary me-3 p-2">
+                              <i class="ti ti-chart-pie-2 ti-sm"></i>
+                            </div>
+                            <div class="card-info">
+                              <h5 class="mb-0">230k</h5>
+                              <small>Sales</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                          <div class="d-flex align-items-center">
+                            <div class="badge rounded-pill bg-label-info me-3 p-2">
+                              <i class="ti ti-users ti-sm"></i>
+                            </div>
+                            <div class="card-info">
+                              <h5 class="mb-0">8.549k</h5>
+                              <small>Customers</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                          <div class="d-flex align-items-center">
+                            <div class="badge rounded-pill bg-label-danger me-3 p-2">
+                              <i class="ti ti-shopping-cart ti-sm"></i>
+                            </div>
+                            <div class="card-info">
+                              <h5 class="mb-0">1.423k</h5>
+                              <small>Products</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                          <div class="d-flex align-items-center">
+                            <div class="badge rounded-pill bg-label-success me-3 p-2">
+                              <i class="ti ti-currency-dollar ti-sm"></i>
+                            </div>
+                            <div class="card-info">
+                              <h5 class="mb-0">$9745</h5>
+                              <small>Revenue</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!-- </div> -->
+                <!--/ Statistics -->
+
+
+                <!-- https://app.poston.io/staging/dashboard
+                viral@mailinator.com
+                admin123
+
+                https://app.poston.io/affiliate_system/index
+                virala@mailinator.com
+                admin123 -->
+
+        </div>
+        <div class=" col-lg-6 grid-item" data-item-id="7">
+             <!-- Earning Reports -->
+             <!-- <div class="col-xl-4 col-md-6 mb-4"> -->
                   <div class="card h-100">
                     <div class="card-header d-flex justify-content-between">
                       <div class="card-title mb-0">
@@ -580,542 +411,157 @@ body { font-family: sans-serif; }
                       <div id="reportBarChart"></div>
                     </div>
                   </div>
-                </div>
+                <!-- </div> -->
                 <!--/ Earning Reports -->
 
-                <!-- Popular Product -->
-                <div class="col-md-6 col-xl-4 mb-4">
-                  <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between">
-                      <div class="card-title m-0 me-2">
-                        <h5 class="m-0 me-2">Popular Products</h5>
-                        <small class="text-muted">Total 10.4k Visitors</small>
-                      </div>
-                      <div class="dropdown">
-                        <button
-                          class="btn p-0"
-                          type="button"
-                          id="popularProduct"
-                          data-bs-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false">
-                          <i class="ti ti-dots-vertical ti-sm text-muted"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="popularProduct">
-                          <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                          <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                          <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-body">
-                      <ul class="p-0 m-0">
-                        <li class="d-flex mb-4 pb-1">
-                          <div class="me-3">
-                            <img src="{{ asset('admin/assets/img/products/iphone.png')}}" alt="User" class="rounded" width="46" />
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Apple iPhone 13</h6>
-                              <small class="text-muted d-block">Item: #FXZ-4567</small>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <p class="mb-0 fw-medium">$999.29</p>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                          <div class="me-3">
-                            <img
-                              src="{{ asset('admin/assets/img/products/nike-air-jordan.png')}}"
-                              alt="User"
-                              class="rounded"
-                              width="46" />
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Nike Air Jordan</h6>
-                              <small class="text-muted d-block">Item: #FXZ-3456</small>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <p class="mb-0 fw-medium">$72.40</p>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                          <div class="me-3">
-                            <img src="{{ asset('admin/assets/img/products/headphones.png')}}" alt="User" class="rounded" width="46" />
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Beats Studio 2</h6>
-                              <small class="text-muted d-block">Item: #FXZ-9485</small>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <p class="mb-0 fw-medium">$99</p>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                          <div class="me-3">
-                            <img
-                              src="{{ asset('admin/assets/img/products/apple-watch.png')}}"
-                              alt="User"
-                              class="rounded"
-                              width="46" />
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Apple Watch Series 7</h6>
-                              <small class="text-muted d-block">Item: #FXZ-2345</small>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <p class="mb-0 fw-medium">$249.99</p>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                          <div class="me-3">
-                            <img
-                              src="{{ asset('admin/assets/img/products/amazon-echo.png')}}"
-                              alt="User"
-                              class="rounded"
-                              width="46" />
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Amazon Echo Dot</h6>
-                              <small class="text-muted d-block">Item: #FXZ-8959</small>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <p class="mb-0 fw-medium">$79.40</p>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="d-flex">
-                          <div class="me-3">
-                            <img
-                              src="{{ asset('admin/assets/img/products/play-station.png')}}"
-                              alt="User"
-                              class="rounded"
-                              width="46" />
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Play Station Console</h6>
-                              <small class="text-muted d-block">Item: #FXZ-7892</small>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <p class="mb-0 fw-medium">$129.48</p>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
+        </div>
+        <div class="grid-item" data-item-id="8">
+        </div>
+        <div class="grid-item" data-item-id="9">
+        </div>
+        </div>
+
+
+        <div class="row">
+          {{-- <div class="col-lg-3 col-6">
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>150</h3>
+
+                <p>New Orders</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div> --}}
+
+          {{-- <div class="col-lg-3 col-6">
+
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                <p>Bounce Rate</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div> --}}
+
+          {{-- <div class="col-lg-3 col-6">
+
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>44</h3>
+
+                <p>User Registrations</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div> --}}
+
+          {{-- <div class="col-lg-3 col-6">
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>65</h3>
+
+                <p>Unique Visitors</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div> --}}
+
+        </div>
+        <div class="row">
+          {{-- <section class="col-lg-7 connectedSortable">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-chart-pie mr-1"></i>
+                  Sales
+                </h3>
+                <div class="card-tools">
+                  <ul class="nav nav-pills ml-auto">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="tab-content p-0">
+
+                  <div class="chart tab-pane active" id="revenue-chart"
+                       style="position: relative; height: 300px;">
+                      <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
+                   </div>
+                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
+                    <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
                   </div>
                 </div>
-                <!--/ Popular Product -->
-
-                <!-- Sales by Countries tabs-->
-                <div class="col-md-6 col-xl-4 col-xl-4 mb-4">
-                  <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between pb-2 mb-1">
-                      <div class="card-title mb-1">
-                        <h5 class="m-0 me-2">Sales by Countries</h5>
-                        <small class="text-muted">62 Deliveries in Progress</small>
-                      </div>
-                      <div class="dropdown">
-                        <button
-                          class="btn p-0"
-                          type="button"
-                          id="salesByCountryTabs"
-                          data-bs-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false">
-                          <i class="ti ti-dots-vertical ti-sm text-muted"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="salesByCountryTabs">
-                          <a class="dropdown-item" href="javascript:void(0);">Download</a>
-                          <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                          <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-body">
-                      <div class="nav-align-top">
-                        <ul class="nav nav-tabs nav-fill" role="tablist">
-                          <li class="nav-item">
-                            <button
-                              type="button"
-                              class="nav-link active"
-                              role="tab"
-                              data-bs-toggle="tab"
-                              data-bs-target="#navs-justified-new"
-                              aria-controls="navs-justified-new"
-                              aria-selected="true">
-                              New
-                            </button>
-                          </li>
-                          <li class="nav-item">
-                            <button
-                              type="button"
-                              class="nav-link"
-                              role="tab"
-                              data-bs-toggle="tab"
-                              data-bs-target="#navs-justified-link-preparing"
-                              aria-controls="navs-justified-link-preparing"
-                              aria-selected="false">
-                              Preparing
-                            </button>
-                          </li>
-                          <li class="nav-item">
-                            <button
-                              type="button"
-                              class="nav-link"
-                              role="tab"
-                              data-bs-toggle="tab"
-                              data-bs-target="#navs-justified-link-shipping"
-                              aria-controls="navs-justified-link-shipping"
-                              aria-selected="false">
-                              Shipping
-                            </button>
-                          </li>
-                        </ul>
-                        <div class="tab-content pb-0">
-                          <div class="tab-pane fade show active" id="navs-justified-new" role="tabpanel">
-                            <ul class="timeline timeline-advance timeline-advance mb-2 pb-1">
-                              <li class="timeline-item ps-4 border-left-dashed">
-                                <span class="timeline-indicator timeline-indicator-success">
-                                  <i class="ti ti-circle-check"></i>
-                                </span>
-                                <div class="timeline-event ps-0 pb-0">
-                                  <div class="timeline-header">
-                                    <small class="text-success text-uppercase fw-medium">sender</small>
-                                  </div>
-                                  <h6 class="mb-0">Myrtle Ullrich</h6>
-                                  <p class="text-muted mb-0 text-nowrap">101 Boulder, California(CA), 95959</p>
-                                </div>
-                              </li>
-                              <li class="timeline-item ps-4 border-transparent">
-                                <span class="timeline-indicator timeline-indicator-primary">
-                                  <i class="ti ti-map-pin"></i>
-                                </span>
-                                <div class="timeline-event ps-0 pb-0">
-                                  <div class="timeline-header">
-                                    <small class="text-primary text-uppercase fw-medium">Receiver</small>
-                                  </div>
-                                  <h6 class="mb-0">Barry Schowalter</h6>
-                                  <p class="text-muted mb-0 text-nowrap">939 Orange, California(CA),92118</p>
-                                </div>
-                              </li>
-                            </ul>
-                            <div class="border-bottom border-bottom-dashed mt-0 mb-4"></div>
-                            <ul class="timeline timeline-advance mb-0">
-                              <li class="timeline-item ps-4 border-left-dashed">
-                                <span class="timeline-indicator timeline-indicator-success">
-                                  <i class="ti ti-circle-check"></i>
-                                </span>
-                                <div class="timeline-event ps-0 pb-0">
-                                  <div class="timeline-header">
-                                    <small class="text-success text-uppercase fw-medium">sender</small>
-                                  </div>
-                                  <h6 class="mb-0">Veronica Herman</h6>
-                                  <p class="text-muted mb-0 text-nowrap">162 Windsor, California(CA), 95492</p>
-                                </div>
-                              </li>
-                              <li class="timeline-item ps-4 border-transparent">
-                                <span class="timeline-indicator timeline-indicator-primary">
-                                  <i class="ti ti-map-pin"></i>
-                                </span>
-                                <div class="timeline-event ps-0 pb-0">
-                                  <div class="timeline-header">
-                                    <small class="text-primary text-uppercase fw-medium">Receiver</small>
-                                  </div>
-                                  <h6 class="mb-0">Helen Jacobs</h6>
-                                  <p class="text-muted mb-0 text-nowrap">487 Sunset, California(CA), 94043</p>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-
-                          <div class="tab-pane fade" id="navs-justified-link-preparing" role="tabpanel">
-                            <ul class="timeline timeline-advance mb-2 pb-1">
-                              <li class="timeline-item ps-4 border-left-dashed">
-                                <span class="timeline-indicator timeline-indicator-success">
-                                  <i class="ti ti-circle-check"></i>
-                                </span>
-                                <div class="timeline-event ps-0 pb-0">
-                                  <div class="timeline-header">
-                                    <small class="text-success text-uppercase fw-medium">sender</small>
-                                  </div>
-                                  <h6 class="mb-0">Barry Schowalter</h6>
-                                  <p class="text-muted mb-0 text-nowrap">939 Orange, California(CA),92118</p>
-                                </div>
-                              </li>
-                              <li class="timeline-item ps-4 border-transparent">
-                                <span class="timeline-indicator timeline-indicator-primary">
-                                  <i class="ti ti-map-pin"></i>
-                                </span>
-                                <div class="timeline-event ps-0 pb-0">
-                                  <div class="timeline-header">
-                                    <small class="text-primary text-uppercase fw-medium">Receiver</small>
-                                  </div>
-                                  <h6 class="mb-0">Myrtle Ullrich</h6>
-                                  <p class="text-muted mb-0 text-nowrap">101 Boulder, California(CA), 95959</p>
-                                </div>
-                              </li>
-                            </ul>
-                            <div class="border-bottom border-bottom-dashed mt-0 mb-4"></div>
-                            <ul class="timeline timeline-advance mb-0">
-                              <li class="timeline-item ps-4 border-left-dashed">
-                                <span class="timeline-indicator timeline-indicator-success">
-                                  <i class="ti ti-circle-check"></i>
-                                </span>
-                                <div class="timeline-event ps-0 pb-0">
-                                  <div class="timeline-header">
-                                    <small class="text-success text-uppercase fw-medium">sender</small>
-                                  </div>
-                                  <h6 class="mb-0">Veronica Herman</h6>
-                                  <p class="text-muted mb-0 text-nowrap">162 Windsor, California(CA), 95492</p>
-                                </div>
-                              </li>
-                              <li class="timeline-item ps-4 border-transparent">
-                                <span class="timeline-indicator timeline-indicator-primary">
-                                  <i class="ti ti-map-pin"></i>
-                                </span>
-                                <div class="timeline-event ps-0 pb-0">
-                                  <div class="timeline-header">
-                                    <small class="text-primary text-uppercase fw-medium">Receiver</small>
-                                  </div>
-                                  <h6 class="mb-0">Helen Jacobs</h6>
-                                  <p class="text-muted mb-0 text-nowrap">487 Sunset, California(CA), 94043</p>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-                          <div class="tab-pane fade" id="navs-justified-link-shipping" role="tabpanel">
-                            <ul class="timeline timeline-advance mb-2 pb-1">
-                              <li class="timeline-item ps-4 border-left-dashed">
-                                <span class="timeline-indicator timeline-indicator-success">
-                                  <i class="ti ti-circle-check"></i>
-                                </span>
-                                <div class="timeline-event ps-0 pb-0">
-                                  <div class="timeline-header">
-                                    <small class="text-success text-uppercase fw-medium">sender</small>
-                                  </div>
-                                  <h6 class="mb-0">Veronica Herman</h6>
-                                  <p class="text-muted mb-0 text-nowrap">101 Boulder, California(CA), 95959</p>
-                                </div>
-                              </li>
-                              <li class="timeline-item ps-4 border-transparent">
-                                <span class="timeline-indicator timeline-indicator-primary">
-                                  <i class="ti ti-map-pin"></i>
-                                </span>
-                                <div class="timeline-event ps-0 pb-0">
-                                  <div class="timeline-header">
-                                    <small class="text-primary text-uppercase fw-medium">Receiver</small>
-                                  </div>
-                                  <h6 class="mb-0">Barry Schowalter</h6>
-                                  <p class="text-muted mb-0 text-nowrap">939 Orange, California(CA),92118</p>
-                                </div>
-                              </li>
-                            </ul>
-                            <div class="border-bottom border-bottom-dashed mt-0 mb-4"></div>
-                            <ul class="timeline timeline-advance mb-0">
-                              <li class="timeline-item ps-4 border-left-dashed">
-                                <span class="timeline-indicator timeline-indicator-success">
-                                  <i class="ti ti-circle-check"></i>
-                                </span>
-                                <div class="timeline-event ps-0 pb-0">
-                                  <div class="timeline-header">
-                                    <small class="text-success text-uppercase fw-medium">sender</small>
-                                  </div>
-                                  <h6 class="mb-0">Myrtle Ullrich</h6>
-                                  <p class="text-muted mb-0 text-nowrap">162 Windsor, California(CA), 95492</p>
-                                </div>
-                              </li>
-                              <li class="timeline-item ps-4 border-transparent">
-                                <span class="timeline-indicator timeline-indicator-primary">
-                                  <i class="ti ti-map-pin"></i>
-                                </span>
-                                <div class="timeline-event ps-0 pb-0">
-                                  <div class="timeline-header">
-                                    <small class="text-primary text-uppercase fw-medium">Receiver</small>
-                                  </div>
-                                  <h6 class="mb-0">Helen Jacobs</h6>
-                                  <p class="text-muted mb-0 text-nowrap">487 Sunset, California(CA), 94043</p>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--/ Sales by Countries tabs -->
-
-                <!-- Transactions -->
-                <!-- <div class="col-md-6 col-xl-4 mb-4">
-                  <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between">
-                      <div class="card-title m-0 me-2">
-                        <h5 class="m-0 me-2">Transactions</h5>
-                        <small class="text-muted">Total 58 Transactions done in this Month</small>
-                      </div>
-                      <div class="dropdown">
-                        <button
-                          class="btn p-0"
-                          type="button"
-                          id="transactionID"
-                          data-bs-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false">
-                          <i class="ti ti-dots-vertical ti-sm text-muted"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                          <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                          <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                          <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-body">
-                      <ul class="p-0 m-0">
-                        <li class="d-flex mb-3 pb-1 align-items-center">
-                          <div class="badge bg-label-primary me-3 rounded p-2">
-                            <i class="ti ti-wallet ti-sm"></i>
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Wallet</h6>
-                              <small class="text-muted d-block">Starbucks</small>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0 text-danger">-$75</h6>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="d-flex mb-3 pb-1 align-items-center">
-                          <div class="badge bg-label-success rounded me-3 p-2">
-                            <i class="ti ti-browser-check ti-sm"></i>
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Bank Transfer</h6>
-                              <small class="text-muted d-block">Add Money</small>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0 text-success">+$480</h6>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="d-flex mb-3 pb-1 align-items-center">
-                          <div class="badge bg-label-danger rounded me-3 p-2">
-                            <i class="ti ti-brand-paypal ti-sm"></i>
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Paypal</h6>
-                              <small class="text-muted d-block mb-1">Client Payment</small>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0 text-success">+$268</h6>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="d-flex mb-3 pb-1 align-items-center">
-                          <div class="badge bg-label-secondary me-3 rounded p-2">
-                            <i class="ti ti-credit-card ti-sm"></i>
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Master Card</h6>
-                              <small class="text-muted d-block mb-1">Ordered iPhone 13</small>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0 text-danger">-$699</h6>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="d-flex mb-3 pb-1 align-items-center">
-                          <div class="badge bg-label-info me-3 rounded p-2">
-                            <i class="ti ti-currency-dollar ti-sm"></i>
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Bank Transactions</h6>
-                              <small class="text-muted d-block mb-1">Refund</small>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0 text-success">+$98</h6>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="d-flex mb-3 pb-1 align-items-center">
-                          <div class="badge bg-label-danger me-3 rounded p-2">
-                            <i class="ti ti-brand-paypal ti-sm"></i>
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Paypal</h6>
-                              <small class="text-muted d-block mb-1">Client Payment</small>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0 text-success">+$126</h6>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="d-flex align-items-center">
-                          <div class="badge bg-label-success me-3 rounded p-2">
-                            <i class="ti ti-browser-check ti-sm"></i>
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Bank Transfer</h6>
-                              <small class="text-muted d-block mb-1">Pay Office Rent</small>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0 text-danger">-$1290</h6>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div> -->
-                <!--/ Transactions -->
-
-                <!-- Invoice table -->
-                <!-- <div class="col-xl-8">
-                  <div class="card">
-                    <div class="table-responsive card-datatable">
-                      <table class="table datatable-invoice border-top">
-                        <thead>
-                          <tr>
-                            <th></th>
-                            <th>ID</th>
-                            <th><i class="ti ti-trending-up text-secondary"></i></th>
-                            <th>Total</th>
-                            <th>Issued Date</th>
-                            <th>Invoice Status</th>
-                            <th>Actions</th>
-                          </tr>
-                        </thead>
-                      </table>
-                    </div>
-                  </div>
-                </div> -->
-                <!-- /Invoice table -->
               </div>
             </div>
+          </section> --}}
+          {{-- <section class="col-lg-5 connectedSortable">
+            <div class="card bg-gradient-primary">
+              <div class="card-header border-0">
+                <h3 class="card-title">
+                  <i class="fas fa-map-marker-alt mr-1"></i>
+                  Visitors
+                </h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
+                    <i class="far fa-calendar-alt"></i>
+                  </button>
+                  <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="world-map" style="height: 250px; width: 100%;"></div>
+              </div>
+              <div class="card-footer bg-transparent">
+                <div class="row">
+                  <div class="col-4 text-center">
+                    <div id="sparkline-1"></div>
+                    <div class="text-white">Visitors</div>
+                  </div>
 
-            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                  <div class="col-4 text-center">
+                    <div id="sparkline-2"></div>
+                    <div class="text-white">Online</div>
+                  </div>
+
+                  <div class="col-4 text-center">
+                    <div id="sparkline-3"></div>
+                    <div class="text-white">Sales</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section> --}}
+        </div>
+      </div>
+    </section>
+  </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://npmcdn.com/packery@2/dist/packery.pkgd.js"></script>
     <script src="https://npmcdn.com/draggabilly@2/dist/draggabilly.pkgd.js"></script>
-
-
-    <script>
+  <script>
     // external js: packery.pkgd.js, draggabilly.pkgd.js
 
 // add Packery.prototype methods
@@ -1192,4 +638,8 @@ $grid.on( 'dragItemPositioned', function() {
 
 
 </script>
-@endsection
+
+  @endsection
+
+
+
